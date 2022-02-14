@@ -30,16 +30,16 @@ const Editor : React.FC<editorProps> = (
   }
 
   return (
-    <div id="editor" style={{height: (!displayPreview) ? '95vh': '30vh', display: (!displayEditor) ? 'none' : ''}}>
+    <div className='editor' style={{height: (!displayPreview) ? '95vh': '30vh', display: (!displayEditor) ? 'none' : ''}}>
       <div className="header">
         <p>Editor</p>
         <div className="close-icon">
           {
             displayPreview ? <TiArrowMaximise onClick={maximizeClick}/> : <MdCloseFullscreen onClick={minimizeClick}/>
           }
-          
         </div>
       </div>
+      <textarea id="editor"/>
     </div>
   )
 }
