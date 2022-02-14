@@ -12,8 +12,12 @@ function App() {
       <Editor 
         displayEditor={displayEditor}
         setDisplayEditor={setDisplayEditor}
+        displayPreview={displayPreview}
+        setDisplayPreview={setDisplayPreview}
       />
       <Previewer 
+        displayEditor={displayEditor}
+        setDisplayEditor={setDisplayEditor}
         displayPreview={displayPreview}
         setDisplayPreview={setDisplayPreview}
       />

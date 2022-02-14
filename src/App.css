@@ -19,16 +19,16 @@
 #preview {
   background-color: aliceblue;
   overflow-y: auto;
+  box-shadow: 1px 1px 10px 2px #3a5f5f;
+  border-radius: 5px;
 }
 
 #editor {
-  height: 30vh;
   width: 600px;
   border: 2px solid green;
 }
 
 #preview {
-  height: 60vh;
   margin-top: 25px;
   width: 900px;
   border: 2px solid green;
@@ -44,4 +44,8 @@
   font-family: 'Electrolize';
   font-weight: bold;
   font-size: 25px;
+}
+
+.close-icon:hover {
+  cursor: pointer;
 }
