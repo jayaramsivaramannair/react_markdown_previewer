@@ -44,6 +44,8 @@
   margin-top: 25px;
   text-align: left;
   width: 900px;
+  font-family: 'Roboto';
+  font-size: 20px;
   border: 2px solid green;
 }
 
