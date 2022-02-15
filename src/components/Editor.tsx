@@ -7,6 +7,8 @@ interface editorProps {
   setDisplayEditor: React.Dispatch<React.SetStateAction<boolean>>
   displayPreview: boolean
   setDisplayPreview: React.Dispatch<React.SetStateAction<boolean>>
+  editorText: {text: string}
+  setEditorText: React.Dispatch<React.SetStateAction<{text: string}>>
 }
 
 
@@ -16,6 +18,8 @@ const Editor : React.FC<editorProps> = (
     setDisplayEditor,
     displayPreview,
     setDisplayPreview,
+    editorText,
+    setEditorText,
   
   }) => {
 
@@ -29,6 +33,13 @@ const Editor : React.FC<editorProps> = (
     setDisplayPreview(true)
   }
 
+  const updateText = (value: string) => {
+    let textValue = value;
+    setEditorText((state) => ({...state, text: textValue}))
+  }
+
+  console.log(editorText)
+
   return (
     <div className='editor' style={{height: (!displayPreview) ? '95vh': '30vh', display: (!displayEditor) ? 'none' : ''}}>
       <div className="header">
@@ -39,7 +50,11 @@ const Editor : React.FC<editorProps> = (
           }
         </div>
       </div>
-      <textarea id="editor"/>
+      <textarea 
+        id="editor" 
+        value={editorText.text} 
+        onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) : void => updateText(e.target.value)}
+      />
     </div>
   )
 }
