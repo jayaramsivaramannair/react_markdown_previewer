@@ -35,7 +35,7 @@ const Editor : React.FC<editorProps> = (
 
   const updateText = (value: string) => {
     let textValue = value;
-    setEditorText((state) => ({...state, text: textValue}))
+    setEditorText({text: textValue})
   }
 
   console.log(editorText)

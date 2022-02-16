@@ -2,6 +2,8 @@ import React, {useEffect} from 'react'
 import {TiArrowMaximise} from 'react-icons/ti'
 import {MdCloseFullscreen} from 'react-icons/md'
 import ReactMarkdown from 'react-markdown'
+import remarkGfm from 'remark-gfm'
+import breaks from 'remark-breaks'
 
 interface previewerProps {
   displayPreview: boolean
@@ -35,14 +37,10 @@ const Previewer: React.FC<previewerProps> = (
 
   useEffect(() => {
     console.log(editorText)
-    setPreviewText((state) => ({...state, text: editorText.text}))
+    setPreviewText({text: editorText.text})
   }, [editorText, setPreviewText])
 
-  let textStrings = previewText.text.split('\n')
-
-  let paragraphs = textStrings.map((t, index: number) => {
-    return <ReactMarkdown key={index}>{t}</ReactMarkdown>
-  })
+  let textStrings = previewText.text
 
 
   return (
@@ -54,7 +52,7 @@ const Previewer: React.FC<previewerProps> = (
         </div>
       </div>
       <div id="preview">
-        {paragraphs}
+        <ReactMarkdown remarkPlugins={[remarkGfm]}  children={textStrings}/>
       </div>
     </div>
   )
