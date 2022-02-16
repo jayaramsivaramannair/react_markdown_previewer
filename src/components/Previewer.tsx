@@ -1,6 +1,7 @@
 import React, {useEffect} from 'react'
 import {TiArrowMaximise} from 'react-icons/ti'
 import {MdCloseFullscreen} from 'react-icons/md'
+import ReactMarkdown from 'react-markdown'
 
 interface previewerProps {
   displayPreview: boolean
@@ -40,19 +41,19 @@ const Previewer: React.FC<previewerProps> = (
   let textStrings = previewText.text.split('\n')
 
   let paragraphs = textStrings.map((t, index: number) => {
-    return <p key = {index}>{t}</p>
+    return <ReactMarkdown key={index}>{t}</ReactMarkdown>
   })
 
 
   return (
-    <div id="preview" style={{height: (!displayEditor) ? '95vh': '60vh',display: (!displayPreview) ? 'none': ''}}>
+    <div className="preview" style={{height: (!displayEditor) ? '95vh': '60vh',display: (!displayPreview) ? 'none': ''}}>
        <div className="header">
         <p>Previewer</p>
         <div className="close-icon">
           {displayEditor ? <TiArrowMaximise  onClick={maximizeClick}/> : <MdCloseFullscreen onClick={minimizeClick}/>}
         </div>
       </div>
-      <div className="text-area">
+      <div id="preview">
         {paragraphs}
       </div>
     </div>
