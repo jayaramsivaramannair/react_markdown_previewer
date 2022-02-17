@@ -2,11 +2,13 @@ import React, { useState } from 'react';
 import './App.css';
 import Editor from './components/Editor';
 import Previewer from './components/Previewer';
+import {starterText} from './utils/starterText';
+
 
 function App() {
   const [displayEditor, setDisplayEditor] = useState(true)
   const [displayPreview, setDisplayPreview] = useState(true)
-  const [editorText, setEditorText] = useState({text : ''})
+  const [editorText, setEditorText] = useState({text : starterText})
   const [previewText, setPreviewText] = useState({text: ''})
   
   return (

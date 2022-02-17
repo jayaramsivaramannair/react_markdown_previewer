@@ -41,7 +41,7 @@ const Editor : React.FC<editorProps> = (
   console.log(editorText)
 
   return (
-    <div className='editor' style={{height: (!displayPreview) ? '95vh': '30vh', display: (!displayEditor) ? 'none' : ''}}>
+    <div className='editor' style={{height: (!displayPreview) ? '100vh': '40vh', display: (!displayEditor) ? 'none' : ''}}>
       <div className="header">
         <p>Editor</p>
         <div className="close-icon">
