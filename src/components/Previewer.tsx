@@ -1,60 +1,54 @@
-import React, {useEffect} from 'react'
+import React from 'react'
 import {TiArrowMaximise} from 'react-icons/ti'
 import {MdCloseFullscreen} from 'react-icons/md'
 import Markdown from 'marked-react';
+import {PreviewerProps} from '../utils/PreviewerProps';
 
-interface previewerProps {
-  displayPreview: boolean
-  setDisplayPreview: React.Dispatch<React.SetStateAction<boolean>>
-  displayEditor: boolean
-  setDisplayEditor: React.Dispatch<React.SetStateAction<boolean>>
-  previewText: {text: string}
-  setPreviewText: React.Dispatch<React.SetStateAction<{text: string}>>
-  editorText: {text: string}
-}
+class Previewer extends React.Component<PreviewerProps, {}> {
+  constructor(props: PreviewerProps) {
+    super(props)
 
-const Previewer: React.FC<previewerProps> = (
-  {displayPreview, 
-    setDisplayPreview, 
-    displayEditor,
-    setDisplayEditor,
-    previewText,
-    setPreviewText,
-    editorText
-  }) => {
-
-  const maximizeClick = () => {
-    //Set the display value for Editor component
-    setDisplayEditor(false)
-  }
-  
-  const minimizeClick = () => {
-    //Set the display value for Editor component
-    setDisplayEditor(true)
+    this.maximizeClick = this.maximizeClick.bind(this)
+    this.minimizeClick = this.minimizeClick.bind(this)
   }
 
-  useEffect(() => {
-    console.log(editorText)
-    setPreviewText({text: editorText.text})
-  }, [editorText, setPreviewText])
+  maximizeClick () {
+    //Set the display value for Editor component
+    this.props.setDisplayEditor(false)
+  }
 
-  let textStrings = previewText.text
+  minimizeClick() {
+    //Set the display value for Editor component
+    this.props.setDisplayEditor(true)
+  }
 
+  componentDidMount() {
+    this.props.setPreviewText({text: this.props.editorText.text})
+  }
 
-  return (
-    <div className="preview" style={{height: (!displayEditor) ? '100vh': '55vh',display: (!displayPreview) ? 'none': ''}}>
+  componentDidUpdate(prevProps: PreviewerProps) {
+    if (this.props.editorText.text !== prevProps.editorText.text) {
+      this.props.setPreviewText({text: this.props.editorText.text})
+    }
+  }
+
+  render () {
+    let textStrings = this.props.editorText.text
+    return (
+      <div className="preview" style={{height: (!this.props.displayEditor) ? '100vh': '55vh',display: (!this.props.displayPreview) ? 'none': ''}}>
        <div className="header">
         <p>Previewer</p>
         <div className="close-icon">
-          {displayEditor ? <TiArrowMaximise  onClick={maximizeClick}/> : <MdCloseFullscreen onClick={minimizeClick}/>}
+          {this.props.displayEditor ? <TiArrowMaximise  onClick={this.maximizeClick}/> : <MdCloseFullscreen onClick={this.minimizeClick}/>}
         </div>
       </div>
       <div id = "preview">
         <Markdown value={textStrings} gfm={true} breaks={true}/>
-        
       </div>
-    </div>
-  )
+      </div>
+    )
+  }
 }
 
-export default Previewer
+
+export default Previewer;
