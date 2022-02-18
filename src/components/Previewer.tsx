@@ -1,8 +1,7 @@
 import React, {useEffect} from 'react'
 import {TiArrowMaximise} from 'react-icons/ti'
 import {MdCloseFullscreen} from 'react-icons/md'
-import MarkdownPreview from '@uiw/react-markdown-preview';
-import remarkGfm from 'remark-gfm';
+import Markdown from 'marked-react';
 
 interface previewerProps {
   displayPreview: boolean
@@ -50,8 +49,9 @@ const Previewer: React.FC<previewerProps> = (
           {displayEditor ? <TiArrowMaximise  onClick={maximizeClick}/> : <MdCloseFullscreen onClick={minimizeClick}/>}
         </div>
       </div>
-      <div id="preview">
-        <MarkdownPreview source={textStrings}  remarkPlugins={[remarkGfm]}/>
+      <div id = "preview">
+        <Markdown value={textStrings} gfm={true} breaks={true}/>
+        
       </div>
     </div>
   )
