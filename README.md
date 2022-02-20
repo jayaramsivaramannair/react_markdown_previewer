@@ -2,6 +2,5 @@
 
 #### This is part of the Frontend Libraries Certification on freecodecamp
 
-# Details:
-
-- [react-markdown-preview](https://www.npmjs.com/package/@uiw/react-markdown-preview) is used to parse text and convert into markdown
+- This application has been created using React Class components coupled with TypeScript
+- [marked-react](https://www.npmjs.com/package/marked-react)
