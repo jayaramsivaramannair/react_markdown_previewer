@@ -3,9 +3,10 @@ import {TiArrowMaximise} from 'react-icons/ti'
 import {MdCloseFullscreen} from 'react-icons/md'
 import {EditorProps} from '../utils/EditorProps';
 
+
 class Editor extends React.Component<EditorProps, {}> {
   constructor (props: EditorProps) {
-    super(props);
+    super(props)
     this.maximizeClick = this.maximizeClick.bind(this)
     this.minimizeClick = this.minimizeClick.bind(this)
     this.updateText = this.updateText.bind(this)
@@ -47,5 +48,6 @@ class Editor extends React.Component<EditorProps, {}> {
   }
 
 }
+
 
 export default Editor

@@ -6,8 +6,9 @@ import {starterText} from './utils/starterText';
 
 
 function App() {
-  const [displayEditor, setDisplayEditor] = useState(true)
+
   const [displayPreview, setDisplayPreview] = useState(true)
+  const [displayEditor, setDisplayEditor] = useState(true)
   const [editorText, setEditorText] = useState({text : starterText})
   const [previewText, setPreviewText] = useState({text: ''})
   
@@ -19,8 +20,10 @@ function App() {
         setDisplayEditor={setDisplayEditor}
         displayPreview={displayPreview}
         setDisplayPreview={setDisplayPreview}
+        previewText={previewText}
+        setPreviewText={setPreviewText}
         editorText = {editorText}
-        setEditorText={setEditorText}
+        setEditorText= {setEditorText}
       />
       <Previewer 
         displayEditor={displayEditor}
